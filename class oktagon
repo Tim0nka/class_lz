@@ -1,0 +1,19 @@
+class oktagon:
+    
+    
+    
+     def __init__ (self, storona, ygol, k):
+         self.storona = storona
+         self.ygol = 45
+         self.k = 1+math.sqrt(2)
+    
+    def info(self):
+        print (f":storona: {self.storona}, ygol: {self.ygol}, k:{self.k}")
+    
+         
+def bis():
+    storona = oktagon(storona = int(input()))
+    storona.info()
+    
+
+bis()
