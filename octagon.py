@@ -31,11 +31,11 @@ class Octagon:
 
     def s_opisanoy(self):
         s1 = (self.rad_opisanoy() ** 2) * 3,14
-        print(f'Площадь описаной около восьмиугольника окружности {s1}')
+        print(f'Площадь описаной около восьмиугольника окружности: {s1}')
 
     def s_vpisanoy(self):
         s2 = (self.rad_vpisanoy() ** 2) * 3,14
-        print(f'Площадь вписаной в восьмиугольник окружности {s2}')
+        print(f'Площадь вписаной в восьмиугольник окружности: {s2}')
 
     #Периметр восьмиугольника
     def perimetr(self):
@@ -65,20 +65,20 @@ class Octagon:
     #Рисование фигур
     def paint(self):
         #Описанная около восьмиугольника окружность
-        circle1 = plt.Circle((0, 0 ), self.rad_opisanoy(), color='r', fill=False)
+        circle1 = plt.Circle((0, 0 ), self.rad_opisanoy(), color='g', fill=False)
         ax=plt.gca()
         ax.add_patch(circle1)
 
 
         #Вписанная в восьмиугольник окружность
-        circle2 = plt.Circle((0,0 ), self.rad_vpisanoy(), color='r', fill=False)
+        circle2 = plt.Circle((0,0 ), self.rad_vpisanoy(), color='b', fill=False)
         ax=plt.gca()
         ax.add_patch(circle2)
 
 
         #Восьмиугольник построенный по вершинам
         x,y = self.peaks()
-        plt.plot(x, y)
+        plt.plot(x, y, color = 'r')
 
 
         #Отображение
@@ -92,7 +92,7 @@ class Octagon:
 
 def left():
 
-    zn = input('Введите сторону восьмиугольника\n')
+    zn = input('Введите сторону восьмиугольника:\n')
     oct = Octagon(int(zn))
     print(oct.rad_opisanoy())
     print(oct.rad_vpisanoy())
