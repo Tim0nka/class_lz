@@ -3,13 +3,14 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 
-
 class Uravnenie:
 
-    def __init__ (self,a,b,c):
+
+    def __init__ (self,a,b,c,d):
         self.a = a
         self.b = b 
-        self.c = c 
+        self.c = c
+        self.d = d 
 
 
     def resheba(self):
@@ -26,42 +27,65 @@ class Uravnenie:
         else:
             print("Корней нет")  
     
+
     def paint(self):
-        #Создаём экземпляр класса figure и добавляем к Figure область Axes
-        fig, ax = plt.subplots()
-        #Добавим заголовок графика
-        ax.set_title('График функции')
-        #Название оси X:
-        ax.set_xlabel('x')
-        #Название оси Y:
-        ax.set_ylabel('y')
-        #Начало и конец изменения значения X, разбитое на 100 точек
-        x = np.linspace(-5, 5, 100) # X от -5 до 5
-        #Построение прямой
-        y = x**2
-        #Вывод графика
-        ax.plot(x, y)
-        plt.show()
+        self.x = np.linspace(-10, 10, 50)
+        self.y = self.a*self.x**2 + self.b*self.x + self.c  
+
+        fig, self.ax = plt.subplots()
+
+        self.ax.plot(self.x, self.y, color='green') 
+        self.ax.set_title('График функции y') 
+        self.ax.set_xlabel('Ось x') 
+        self.ax.set_ylabel('Ось y') 
+        self.ax.grid() 
+
+        self.ax.set_xlim(-10, 10) 
+        self.ax.set_ylim(-10, 10) 
+        
+    def show(self):   
+        self.paint()
+        plt.show() 
 
 
 class Proizvodnay(Uravnenie):
 
 
-    def
+    def __init__(self,a ,b, c, d):
+        super().__init__(a, b, c, d)
+
+
+    def paint(self):
+        super().paint()
+        self.x = np.linspace(-10, 10, 2)
+        self.y = self.a*self.x + self.b
+        self.ax.plot(self.x, self.y, color='red')
 
 
 class Integral(Uravnenie):
 
 
-    def
+    def __init__(self,a ,b, c, d):
+        super().__init__(a, b, c, d)
 
-            
+
+    def paint(self):
+        super().paint()
+        self.x = np.linspace(-10, 10, 100)
+        self.y = self.a*self.x**3 + self.b*self.x**2 + self.c*self.x + self.d
+        self.ax.plot(self.x, self.y, color='grey')
+
+
 print("Введите коэффициенты для уравнения")
 print("ax^2 + bx + c = 0:")
 a = float(input("a = "))
 b = float(input("b = "))
 c = float(input("c = "))
+d = float(input("d = "))
 
-x = Uravnenie(a, b, c)
+
+x = Uravnenie(a, b, c, d)
+x = Integral(a, b, c, d)
+x = Proizvodnay(a, b, c, d)
 x.resheba()
-x.paint()
+x.show()
